@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Charitize</title>
+{% endblock %}
+
+{% block body %}
+<div class="page-content">
+    <div class="sidebar">
+        <ul style="list-style: none;">
+            <li><a href="/">Home</a></li>
+            <li><a class="active" href="find">Find a Charity</a></li>
+            <li><a>My Donations</a></li>
+        </ul>
+    </div>
+
+    <div style="margin-left:25%; padding:1px 16px;">
+        <h1>Enter a keyword to find a charity foundation to donate to:</h1>
+        
+        <form action="/find" method="POST">
+            <input type="text" name="searchCharity"><button type="submit">Search</button>
+        </form>
+
+        {% for name in names %}
+            <tr>
+                <td>{{ name }}</td><br>
+            </tr>
+        {% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

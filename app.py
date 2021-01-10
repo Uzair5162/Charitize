@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import requests
 import json
-import config   #File with app credentials
+import config   #File with api credentials
 
 app_id = config.app_id
 app_key = config.app_key

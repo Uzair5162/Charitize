@@ -17,6 +17,44 @@
     <div style="margin-left:25%; padding:1px 16px;">
         <h1>My Donations:</h1>
 
+        {% if donations|length < 1 %}
+        <h3>You haven't logged any donations, add one below!</h4>
+        <form action="/donations" method="POST">
+            <p>Foundation name</p>
+            <input type="text" name="foundationName" placeholder="eg. Orphan Helpers">
+            <p>Amount donated</p>
+            <label>$ </label><input type="number" name="amountDonated" min="0" placeholder="10" step=".01">            
+            <button type="submit">Add Donation</button>
+        </form>
+
+        {% else %}
+        <form action="/donations" method="POST">
+            <p>Foundation name</p>
+            <input type="text" name="foundationName" placeholder="eg. Orphan Helpers">
+            <p>Amount donated</p>
+            <label>$ </label><input type="number" name="amountDonated" min="0" placeholder="10" step=".01">            
+            <button type="submit">Add Donation</button>
+        </form>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Foundation</th>
+            </tr>
+
+            {% for donation in donations %}
+            <tr>
+                <td>{{ donation.date_created.date() }}</td>
+                <td>{{ donation.amount }}</td>
+                <td>{{ donation.foundation }}</td>
+                <td>
+                    <a href="/delete/{{donation.id}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

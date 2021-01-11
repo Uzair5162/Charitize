@@ -18,6 +18,19 @@ parameters = {
 }
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///donations.db'
+db = SQLAlchemy(app)
+
+class Donations(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    amount = db.Column(db.Float, default=0)
+    foundation = db.Column(db.String(200), nullable=False)
+
+    def __repr__(self):
+        return '<Donation %r>' % self.id
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -27,7 +40,13 @@ def find():
     if request.method == 'POST':
         # 'searchCharity' is the NAME of the HTML input that is used in the POST call
         searchKeyword = request.form['searchCharity']
+        numResults = request.form['quantity']
+
+        if not searchKeyword:
+            searchKeyword = "medical"
+
         parameters["search"] = searchKeyword
+        parameters["pageSize"] = numResults
 
         response = requests.get("https://api.data.charitynavigator.org/v2/Organizations", params=parameters, verify=False)
 
@@ -46,9 +65,35 @@ def find():
         # tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('find.html')
 
-@app.route('/donations')
+@app.route('/donations', methods=['POST', 'GET'])
 def donations():
-    return render_template('donations.html')
+    if request.method == 'POST':
+        dollarAmount = request.form['amountDonated']
+        foundationName = request.form['foundationName']
+
+        new_donation = Donations(amount=dollarAmount, foundation=foundationName)
+
+        try:
+            db.session.add(new_donation)
+            db.session.commit()
+            return redirect('/donations')
+        except:
+            return 'There was an issue adding your donation'
+
+    else:
+        donations = Donations.query.order_by(Donations.date_created).all()
+        return render_template('donations.html', donations=donations)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    donation_to_delete = Donations.query.get_or_404(id)
+
+    try:
+        db.session.delete(donation_to_delete)
+        db.session.commit()
+        return redirect('/donations')
+    except:
+        return 'There was a problem deleting that donation'
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -18,7 +18,10 @@
         <h1>Enter a keyword to find a charity foundation to donate to:</h1>
         
         <form action="/find" method="POST">
-            <input type="text" name="searchCharity"><button type="submit">Search</button>
+            <input type="search" name="searchCharity" placeholder="eg. medical">
+            <label for="quantity">How many results do you want to see (between 1 and 10)?</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10" value="5">
+            <button type="submit">Search</button>
         </form>
         
         {% for name in names %}

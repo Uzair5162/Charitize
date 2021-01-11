@@ -32,15 +32,23 @@ def find():
         response = requests.get("https://api.data.charitynavigator.org/v2/Organizations", params=parameters, verify=False)
 
         names = []
+        cities = []
+        urls = []
         for charity in response.json():
             # print(charity["charityName"])
-            names.append(charity["charityName"])
+            names.append(charity["charityName"].title())
+            cities.append(charity["mailingAddress"]["city"].title() + ", " + charity["mailingAddress"]["stateOrProvince"].upper())
+            urls.append(charity["charityNavigatorURL"])
 
-        return render_template('find.html', names=names)
+        return render_template('find.html', names=names, cities=cities, urls=urls)
 
     else:
         # tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('find.html')
+
+@app.route('/donations')
+def donations():
+    return render_template('donations.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

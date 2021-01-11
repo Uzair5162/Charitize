@@ -10,7 +10,7 @@
         <ul style="list-style: none;">
             <li><a href="/">Home</a></li>
             <li><a class="active" href="find">Find a Charity</a></li>
-            <li><a>My Donations</a></li>
+            <li><a href="donations">My Donations</a></li>
         </ul>
     </div>
 
@@ -20,11 +20,11 @@
         <form action="/find" method="POST">
             <input type="text" name="searchCharity"><button type="submit">Search</button>
         </form>
-
+        
         {% for name in names %}
-            <tr>
-                <td>{{ name }}</td><br>
-            </tr>
+            <h2>{{ name }}</h2>
+            <h3>{{ cities[loop.index0] }}</h3>
+            <a target="_blank" href="{{ urls[loop.index0] }}"><button>donate now</button></a>
         {% endfor %}
     </div>
     

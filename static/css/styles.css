@@ -1,36 +1,70 @@
-body {
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
     background-color: #f5f7fb;
     font-family: nunito;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    height: 100%;
+    border-right: solid;
+    border-width: 0.01em;
+    border-color: #e5e6ed;
+    padding: 2em;
+/* 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    list-style: none; */
+}
+.navBut {
+    margin-bottom: 2em;
+    height: 5em;
+    width: 16em;
+    align-self: center;
+    border-radius: 1em;
+    outline: 0;
+    font-family: nunito;
+    background-color: #6d38d5;
+    border: none;
+    box-shadow: 0 0 1.2em 0.1em #6d38d5;    
+
+}
+.inactive {
+    box-shadow: none;
+    margin-bottom: 2em;
+    height: 5em;
+    width: 16em;
+    align-self: center;
+    border-radius: 1em;
+    outline: 0;
+    font-family: nunito;
+    background-color: white;
+    border: none;
+}
+.navButText {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #727272;
+    font-weight: 700;
+}
+.navButText:hover {
+    font-weight: 800;
+    color: #5a5a5a;
 }
 
 h1 {
     font-family: nunito;
     font-weight: 600;
-}
-
-/* SIDEBAR */
-.sidebar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 20%;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    list-style: none;
-}
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-li a.active {
-    background-color: #6f3cdc;
-    color: white;
-} 
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
 }

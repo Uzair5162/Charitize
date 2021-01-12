@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Charitize</title>
+<title>Charityze</title>
 {% endblock %}
 
 {% block body %}
 <div class="page-content">
     <div class="sidebar">
-        <ul style="list-style: none;">
+        <img src="{{ url_for('static', filename='assets/charity.png') }}" style="width: 8em; margin-bottom: 3em; align-self: center;">
+        <button class="navBut active"><a style="font-size: 1.5em; text-decoration: none; color: white; font-weight: 700;" href="/">Home</a></button>
+        <button class="navBut inactive"><a class="navButText" href="find">&#128269; Find a Charity</a></button>
+        <button class="navBut inactive"><a class="navButText" href="donations">&#128214; My Donations</a></button>
+
+        <!-- <ul style="list-style: none;"></ul>           
             <li><a href="/" class="active">Home</a></li>
             <li><a href="find">Find a Charity</a></li>
             <li><a href="donations">My Donations</a></li>
-        </ul>
+        </ul> -->
     </div>
-    <div style="margin-left:25%; padding:1px 16px;">
-        <h1>Welcome to Charitize!</h1>
+
+    <div class="main" style="margin-left:20em; padding:1px 16px;">
+        <h1>Welcome to Charityze!</h1>
+        <h4>By Uzair Ahmad</h4>
+        <a href="find"><button class="main-button">Find a Charity</button></a>
+        <a href="donations"><button class="main-button">Make a Donation</button></a>
     </div>
     
 </div>

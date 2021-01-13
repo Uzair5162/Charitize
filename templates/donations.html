@@ -13,8 +13,8 @@
         <button class="navBut active"><a class="navButText" style="font-size: 1.5em; text-decoration: none; color: white; font-weight: 700;" href="donations">&#128214; My Donations</a></button>
     </div>
 
-    <div class="main" style="margin-left:25%; padding:1px 16px;">
-        <h1>My Donations:</h1>
+    <div class="main">
+        <h1>My Donations</h1>
 
         {% if donations|length < 1 %}
         <h3>You haven't logged any donations, add one below!</h4>
@@ -55,5 +55,10 @@
         </table>
         {% endif %}
     </div>
+
+    <div class="cred">
+        By <a class="credName" href="http://uzairr.me/" target="_blank">Uzair Ahmad</a>
+    </div>
+
 </div>
 {% endblock %}

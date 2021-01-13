@@ -18,15 +18,7 @@ body, html {
     border-width: 0.01em;
     border-color: #e5e6ed;
     padding: 2em;
-/* 
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    list-style: none; */
+    overflow: hidden;
 }
 .navBut {
     margin-bottom: 2em;
@@ -38,8 +30,7 @@ body, html {
     font-family: nunito;
     background-color: #6d38d5;
     border: none;
-    box-shadow: 0 0 1.2em 0.1em #6d38d5;    
-
+    box-shadow: 0 0 1.2em 0.1em #6d38d5;
 }
 .inactive {
     box-shadow: none;
@@ -64,7 +55,55 @@ body, html {
     color: #5a5a5a;
 }
 
+.main {
+    margin-left: 19em;
+    padding-left: 7em;
+    padding-top: 3em;
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border-radius: 2em;
+}
+
+.mainBut {
+    height: 3em;
+    width: 10em;
+    align-self: center;
+    border-radius: 1.5em;
+    outline: 0;
+    font-family: nunito;
+    background-color: #915bfd;
+    border: none;
+    color: white;
+    margin-right: 2em;
+    font-weight: 700;
+    font-size: 1em;
+}
+.mainBut:hover {
+    cursor: pointer;
+}
 h1 {
     font-family: nunito;
-    font-weight: 600;
+    font-weight: 700;
+    padding-bottom: 0px;
+    font-size: 2.5em;
+}
+h2 {
+    font-size: 1.9em;
+}
+
+.cred {
+    position: absolute;
+    bottom: 5px;
+    margin-left: 1em;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.credName {
+    color: #6d38d5;
+}
+.credName:hover {
+    background-color: #B4D5FE;
+    color: #6d38d5;
 }

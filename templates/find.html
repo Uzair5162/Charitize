@@ -13,14 +13,14 @@
         <button class="navBut inactive"><a class="navButText" href="donations">&#128214; My Donations</a></button>
     </div>
 
-    <div class="main" style="margin-left:25%; padding:1px 16px;">
-        <h1>Enter a keyword to find a charity foundation to donate to:</h1>
+    <div class="main">
+        <h2>Enter a keyword to find a charity foundation to donate to:</h1>
         
         <form action="/find" method="POST">
-            <input type="search" name="searchCharity" placeholder="eg. medical">
-            <label for="quantity">How many results do you want to see (between 1 and 10)?</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="10" value="5">
-            <button type="submit">Search</button>
+            <input type="search" name="searchCharity" placeholder="eg. medical"><br><br>
+            <label for="quantity">How many results do you want to see (between 1 and 10)?</label><br>
+            <input type="number" id="quantity" name="quantity" min="1" max="10" value="5"><br><br>
+            <button type="submit" class="mainBut">Search</button>
         </form>
         
         {% for name in names %}
@@ -28,6 +28,10 @@
             <h3>{{ cities[loop.index0] }}</h3>
             <a target="_blank" href="{{ urls[loop.index0] }}"><button>donate now</button></a>
         {% endfor %}
+    </div>
+    
+    <div class="cred">
+        By <a class="credName" href="http://uzairr.me/" target="_blank">Uzair Ahmad</a>
     </div>
     
 </div>

@@ -94,7 +94,7 @@ h2 {
 }
 
 .cred {
-    position: absolute;
+    position: fixed;
     bottom: 5px;
     margin-left: 1em;
     font-size: 1.2em;

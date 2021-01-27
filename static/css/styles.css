@@ -83,6 +83,7 @@ body, html {
 .mainBut:hover {
     cursor: pointer;
 }
+
 h1 {
     font-family: nunito;
     font-weight: 700;
@@ -91,6 +92,16 @@ h1 {
 }
 h2 {
     font-size: 1.9em;
+    font-weight: 300;
+}
+
+.subheading {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+.subheading2 {
+    font-weight: 300;
+    font-size: 2.2em;
 }
 
 .cred {

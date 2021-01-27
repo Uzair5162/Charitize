@@ -60,7 +60,7 @@ body, html {
     padding-left: 7em;
     padding-top: 3em;
 
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     overflow: auto;
     border-radius: 2em;
@@ -103,6 +103,40 @@ h2 {
     font-weight: 300;
     font-size: 2.2em;
 }
+
+.name {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+.city {
+    font-weight: 300;
+    font-size: 0.9em;
+    margin-right: 3em;
+    display: inline;
+}
+.donateBtn {
+    display: inline;
+    float: right;
+    font-family: nunito;
+    background-color: #b894ff;
+    border: none;
+    color: black;
+    height: 2em;
+    border-radius: 5px;
+    font-weight: 700;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.donateBtn:hover {
+    cursor: pointer;
+}
+.row2 {
+    width: 18em;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+
 
 .cred {
     position: fixed;

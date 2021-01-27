@@ -19,16 +19,22 @@
         <h3>Enter a keyword to find a charity foundation to donate to:</h3>
         
         <form action="/find" method="POST">
-            <input autocomplete="off" type="search" name="searchCharity" placeholder="eg. medical"><br><br>
-            <label for="quantity">How many results do you want to see (between 1 and 10)?</label><br>
+            I want to donate to a <input autocomplete="off" type="search" name="searchCharity" placeholder="eg. medical"> charity.<br><br>
+            <label for="quantity">How many results do you want to see (between 1 and 10)?&nbsp;</label>
             <input type="number" id="quantity" name="quantity" min="1" max="10" value="5"><br><br>
             <button type="submit" class="mainBut">Search</button>
         </form>
         
         {% for name in names %}
-            <h2>{{ name }}</h2>
-            <h3>{{ cities[loop.index0] }}</h3>
-            <a target="_blank" href="{{ urls[loop.index0] }}"><button>donate now</button></a>
+        <div class="results">
+            <h2 class="name">{{ name }}</h2>
+            <div class="row2">
+                <h3 class="city">{{ cities[loop.index0] }}</h3>
+                <a target="_blank" href="{{ urls[loop.index0] }}"><button class="donateBtn">donate now</button></a>
+            </div>
+            
+            <!-- <hr> -->
+        </div>
         {% endfor %}
     </div>
     

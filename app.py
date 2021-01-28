@@ -62,7 +62,6 @@ def find():
         return render_template('find.html', names=names, cities=cities, urls=urls)
 
     else:
-        # tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('find.html')
 
 @app.route('/donations', methods=['POST', 'GET'])
@@ -70,6 +69,12 @@ def donations():
     if request.method == 'POST':
         dollarAmount = request.form['amountDonated']
         foundationName = request.form['foundationName']
+
+        if not foundationName:
+            foundationName = "Blank"
+        
+        if not bool(dollarAmount):
+            dollarAmount = 0
 
         new_donation = Donations(amount=dollarAmount, foundation=foundationName)
 
@@ -94,6 +99,32 @@ def delete(id):
         return redirect('/donations')
     except:
         return 'There was a problem deleting that donation'
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    donation_to_update = Donations.query.get_or_404(id)
+
+    if request.method == 'POST':
+        name = request.form['name']
+        number = request.form['number']
+
+        if not name:
+            name = "Blank"
+
+        if not bool(number):
+            number = 0
+
+        donation_to_update.foundation = name
+        donation_to_update.amount = number
+        
+    else:
+        return render_template('update.html', donation = donation_to_update)
+
+    try:
+        db.session.commit()
+        return redirect('/donations')
+    except:
+        return 'There was a problem updating that Donation'
 
 if __name__ == "__main__":
     app.run(debug=True)
